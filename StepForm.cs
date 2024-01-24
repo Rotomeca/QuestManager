@@ -27,5 +27,10 @@ namespace QuestManager
                 steptype.Items.Add(item);
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
