@@ -36,7 +36,8 @@ namespace QuestManager
                 .InitAmount(amountLabel, amount, unitLabel)
                 .InitDescription(desc_label, long_desc, short_desc)
                 .InitIsVisible(isVisible)
-                .InitNextSteps(nextSteps);
+                .InitNextSteps(nextSteps)
+                .InitGameDataId(gameDataIdLabel, gameDataId);
 
             _manager = new StepManager(allSteps, initialiser);
             
@@ -55,6 +56,21 @@ namespace QuestManager
         private void deleteButton_Click(object sender, EventArgs e)
         {
             _manager.RemoveCurrent();
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void steptype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var newType = (QuestStepType)Enum.Parse(typeof(QuestStepType), (sender as ComboBox).SelectedItem.ToString());
+            if (_manager?.Visualiser?.CurrentStep != null && newType != _manager.Visualiser.CurrentStep.Type)
+            {
+                _manager.Visualiser.CurrentStep.Type = newType;
+                _manager.Visualiser.UpdateStep();
+            }
         }
     }
 }

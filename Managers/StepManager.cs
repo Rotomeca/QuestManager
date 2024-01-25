@@ -17,7 +17,7 @@ namespace QuestManager.Managers
         private TreeView _tree;
         private StepVisualiser _visualiser;
         private Steps _steps => Manager.Instance.QuestManager.Visualiser.CurrentQuest.Steps;
-
+        public StepVisualiser Visualiser => _visualiser;
         public StepManager(TreeView tree, StepVisualiser.Initialiser initisaliser)
         {
             _tree = tree;

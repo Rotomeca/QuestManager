@@ -34,6 +34,8 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.addStepButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.gameDataId = new System.Windows.Forms.NumericUpDown();
+            this.gameDataIdLabel = new System.Windows.Forms.Label();
             this.switchState = new System.Windows.Forms.CheckBox();
             this.unitLabel = new System.Windows.Forms.Label();
             this.amount = new System.Windows.Forms.NumericUpDown();
@@ -58,6 +60,7 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameDataId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.amount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +76,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.gameDataId);
+            this.splitContainer1.Panel2.Controls.Add(this.gameDataIdLabel);
             this.splitContainer1.Panel2.Controls.Add(this.switchState);
             this.splitContainer1.Panel2.Controls.Add(this.unitLabel);
             this.splitContainer1.Panel2.Controls.Add(this.amount);
@@ -80,13 +85,13 @@
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.nextSteps);
             this.splitContainer1.Panel2.Controls.Add(this.isVisible);
-            this.splitContainer1.Panel2.Controls.Add(this.long_desc);
             this.splitContainer1.Panel2.Controls.Add(this.short_desc);
             this.splitContainer1.Panel2.Controls.Add(this.desc_label);
             this.splitContainer1.Panel2.Controls.Add(this.steptype);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 265;
+            this.splitContainer1.Panel2.Controls.Add(this.long_desc);
+            this.splitContainer1.Size = new System.Drawing.Size(684, 291);
+            this.splitContainer1.SplitterDistance = 149;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
@@ -103,8 +108,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(265, 450);
-            this.splitContainer2.SplitterDistance = 409;
+            this.splitContainer2.Size = new System.Drawing.Size(149, 291);
+            this.splitContainer2.SplitterDistance = 262;
             this.splitContainer2.TabIndex = 0;
             // 
             // allSteps
@@ -112,7 +117,7 @@
             this.allSteps.Dock = System.Windows.Forms.DockStyle.Fill;
             this.allSteps.Location = new System.Drawing.Point(0, 0);
             this.allSteps.Name = "allSteps";
-            this.allSteps.Size = new System.Drawing.Size(265, 409);
+            this.allSteps.Size = new System.Drawing.Size(149, 262);
             this.allSteps.TabIndex = 0;
             // 
             // splitContainer3
@@ -128,8 +133,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.deleteButton);
-            this.splitContainer3.Size = new System.Drawing.Size(265, 37);
-            this.splitContainer3.SplitterDistance = 177;
+            this.splitContainer3.Size = new System.Drawing.Size(149, 25);
+            this.splitContainer3.SplitterDistance = 78;
             this.splitContainer3.TabIndex = 0;
             // 
             // addStepButton
@@ -137,7 +142,7 @@
             this.addStepButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addStepButton.Location = new System.Drawing.Point(0, 0);
             this.addStepButton.Name = "addStepButton";
-            this.addStepButton.Size = new System.Drawing.Size(177, 37);
+            this.addStepButton.Size = new System.Drawing.Size(78, 25);
             this.addStepButton.TabIndex = 0;
             this.addStepButton.Text = "Ajouter";
             this.addStepButton.UseVisualStyleBackColor = true;
@@ -150,17 +155,36 @@
             this.deleteButton.ForeColor = System.Drawing.SystemColors.Control;
             this.deleteButton.Location = new System.Drawing.Point(0, 0);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(84, 37);
+            this.deleteButton.Size = new System.Drawing.Size(67, 25);
             this.deleteButton.TabIndex = 0;
             this.deleteButton.Text = "Supprimer";
             this.deleteButton.UseMnemonic = false;
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // gameDataId
+            // 
+            this.gameDataId.Location = new System.Drawing.Point(202, 6);
+            this.gameDataId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gameDataId.Name = "gameDataId";
+            this.gameDataId.Size = new System.Drawing.Size(90, 20);
+            this.gameDataId.TabIndex = 13;
+            // 
+            // gameDataIdLabel
+            // 
+            this.gameDataIdLabel.AutoSize = true;
+            this.gameDataIdLabel.Location = new System.Drawing.Point(187, 7);
+            this.gameDataIdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.gameDataIdLabel.Name = "gameDataIdLabel";
+            this.gameDataIdLabel.Size = new System.Drawing.Size(16, 13);
+            this.gameDataIdLabel.TabIndex = 12;
+            this.gameDataIdLabel.Text = "Id";
+            this.gameDataIdLabel.Click += new System.EventHandler(this.label3_Click_1);
+            // 
             // switchState
             // 
             this.switchState.AutoSize = true;
-            this.switchState.Location = new System.Drawing.Point(5, 242);
+            this.switchState.Location = new System.Drawing.Point(5, 223);
             this.switchState.Name = "switchState";
             this.switchState.Size = new System.Drawing.Size(80, 17);
             this.switchState.TabIndex = 11;
@@ -180,7 +204,7 @@
             // amount
             // 
             this.amount.Location = new System.Drawing.Point(5, 241);
-            this.amount.Margin = new System.Windows.Forms.Padding(2);
+            this.amount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.amount.Name = "amount";
             this.amount.Size = new System.Drawing.Size(90, 20);
             this.amount.TabIndex = 9;
@@ -199,7 +223,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(362, 223);
+            this.label2.Location = new System.Drawing.Point(365, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 7;
@@ -207,9 +231,9 @@
             // 
             // nextSteps
             // 
-            this.nextSteps.Location = new System.Drawing.Point(303, 239);
+            this.nextSteps.Location = new System.Drawing.Point(304, 69);
             this.nextSteps.Name = "nextSteps";
-            this.nextSteps.Size = new System.Drawing.Size(219, 155);
+            this.nextSteps.Size = new System.Drawing.Size(219, 129);
             this.nextSteps.TabIndex = 6;
             // 
             // isVisible
@@ -226,7 +250,7 @@
             // 
             this.long_desc.Location = new System.Drawing.Point(6, 69);
             this.long_desc.Name = "long_desc";
-            this.long_desc.Size = new System.Drawing.Size(512, 129);
+            this.long_desc.Size = new System.Drawing.Size(272, 129);
             this.long_desc.TabIndex = 4;
             this.long_desc.Text = "";
             // 
@@ -234,7 +258,7 @@
             // 
             this.short_desc.Location = new System.Drawing.Point(6, 69);
             this.short_desc.Name = "short_desc";
-            this.short_desc.Size = new System.Drawing.Size(155, 20);
+            this.short_desc.Size = new System.Drawing.Size(272, 20);
             this.short_desc.TabIndex = 3;
             // 
             // desc_label
@@ -253,6 +277,7 @@
             this.steptype.Name = "steptype";
             this.steptype.Size = new System.Drawing.Size(121, 21);
             this.steptype.TabIndex = 1;
+            this.steptype.SelectedIndexChanged += new System.EventHandler(this.steptype_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -267,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(684, 291);
             this.Controls.Add(this.splitContainer1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -290,6 +315,7 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gameDataId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.amount)).EndInit();
             this.ResumeLayout(false);
 
@@ -315,5 +341,7 @@
         private System.Windows.Forms.Button addStepButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.TreeView allSteps;
+        private System.Windows.Forms.Label gameDataIdLabel;
+        private System.Windows.Forms.NumericUpDown gameDataId;
     }
 }

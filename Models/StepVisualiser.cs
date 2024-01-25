@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using GameDataId = QuestManager.Models.GameDataIdNumeric;
+
 namespace QuestManager.Models
 {
     public class StepVisualiser
@@ -20,6 +22,9 @@ namespace QuestManager.Models
             public CheckBox switchState;
             public Label amountLabel;
             public Label amountUnitLabel;
+            public Label gameDataIdLabel;
+            public GameDataId gameDataId;
+             
             public TreeView nextSteps;
            
             private Data() {}
@@ -74,6 +79,14 @@ namespace QuestManager.Models
                 return this;
             }
 
+            public Initialiser InitGameDataId(Label label, GameDataId field)
+            {
+                _controls.gameDataIdLabel = label;
+                _controls.gameDataId = field;
+
+                return this;
+            }
+
             public object Get() => _controls;
 
             public static Initialiser Start()
@@ -95,6 +108,13 @@ namespace QuestManager.Models
         public StepVisualiser ChangeStep(Step step)
         {
             _currentStep = step;
+            
+            return this.UpdateStep();
+        }
+
+        public StepVisualiser UpdateStep()
+        {
+            Step step = _currentStep;
             _controls.type.Text = Enum.GetName(step.Type.GetType(), step.Type);
             _controls.isVisible.Checked = !step.IsHidden;
 
@@ -109,7 +129,7 @@ namespace QuestManager.Models
                     _controls.who_where.Visible = true;
                     _controls.who_where.Text = step.Description;
                     break;
- 
+
                 default:
                     _controls.description.Visible = true;
                     _controls.who_where.Visible = false;
@@ -128,13 +148,87 @@ namespace QuestManager.Models
                 _controls.amountLabel.Visible = true;
                 _controls.amount.Visible = true;
                 _controls.amountUnitLabel.Visible = true;
+
+                _controls.amountLabel.Text = step.AmountLabel();
+                _controls.amountUnitLabel.Text = step.AmountUnit();
             }
 
             _controls.switchState.Visible = step.ShowSwitchState();
-            
-            
+            _controls.switchState.Checked = step.Amount != 0;
+
+
+            if (step.ShowGameDataId())
+            {
+                _controls.gameDataIdLabel.Visible = true;
+                _controls.gameDataId.Visible = true;
+                _controls.gameDataId.UpdateValue(step.GameDataId.ToString());
+            }
+            else
+            {
+                _controls.gameDataIdLabel.Visible = false;
+                _controls.gameDataId.Visible = false;
+            }
 
             return this;
+        }
+    }
+
+    public class GameDataId<T> where T : Control
+    {
+        protected T _Control { get; }
+
+        public GameDataId(T control)
+        {
+            _Control = control;
+        }
+
+        public void UpdateValue(string value)
+        {
+            _Control.Text = value;
+        }
+
+        public bool Visible { get => _Control.Visible; set => _Control.Visible = value; }
+
+        public static implicit operator T(GameDataId<T> data)
+        {
+            return data._Control;
+        }
+    }
+
+    public class GameDataIdNumeric : GameDataId<NumericUpDown>
+    {
+        public GameDataIdNumeric(NumericUpDown control) : base(control)
+        {}
+
+        public new void UpdateValue(string value)
+        {
+            _Control.Value = decimal.Parse(value);
+        }
+
+        public static implicit operator NumericUpDown(GameDataIdNumeric data)
+        {
+            return data._Control;
+        }
+
+        public static implicit operator GameDataIdNumeric(NumericUpDown data)
+        {
+            return new GameDataIdNumeric(data);
+        }
+    }
+
+    public class GameDataIdSelect : GameDataId<ComboBox>
+    {
+        public GameDataIdSelect(ComboBox control) : base(control)
+        { }
+
+        public static implicit operator ComboBox(GameDataIdSelect data)
+        {
+            return data._Control;
+        }
+
+        public static implicit operator GameDataIdSelect(ComboBox data)
+        {
+            return new GameDataIdSelect(data);
         }
     }
 }

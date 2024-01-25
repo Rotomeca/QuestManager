@@ -76,5 +76,23 @@ namespace QuestManager.Models
 
             return label;
         }
+
+        public string AmountUnit()
+        {
+            string label;
+
+            switch (Type)
+            {
+                case StepType.Kill:
+                    label = $"Ennemi{(Amount > 1 ? "s" : string.Empty)}";
+                    break;
+
+                default:
+                    label = string.Empty;
+                    break;
+            }
+
+            return label;
+        }
     }
 }
