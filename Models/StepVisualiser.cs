@@ -29,7 +29,7 @@ namespace QuestManager.Models
         public sealed class Initialiser
         {
             private Data _controls;
-            public Initialiser()
+            private Initialiser()
             {
                 _controls = Data.Provide();
             }
@@ -75,6 +75,11 @@ namespace QuestManager.Models
             }
 
             public object Get() => _controls;
+
+            public static Initialiser Start()
+            {
+                return new Initialiser();
+            }
         }
 
         private Data _controls;
@@ -90,8 +95,45 @@ namespace QuestManager.Models
         public StepVisualiser ChangeStep(Step step)
         {
             _currentStep = step;
-            _controls.type.Text = Enum.GetName(typeof(Step), step.Type);
+            _controls.type.Text = Enum.GetName(step.Type.GetType(), step.Type);
             _controls.isVisible.Checked = !step.IsHidden;
+
+            _controls.descLabel.Text = step.GetDescriptionLabel();
+
+            switch (step.Type)
+            {
+                case Enums.Quests.Steps.QuestStepType.Location:
+                case Enums.Quests.Steps.QuestStepType.TalkingTo:
+
+                    _controls.description.Visible = false;
+                    _controls.who_where.Visible = true;
+                    _controls.who_where.Text = step.Description;
+                    break;
+ 
+                default:
+                    _controls.description.Visible = true;
+                    _controls.who_where.Visible = false;
+                    _controls.description.Text = step.Description;
+                    break;
+            }
+
+            if (!step.ShowAmount())
+            {
+                _controls.amountLabel.Visible = false;
+                _controls.amount.Visible = false;
+                _controls.amountUnitLabel.Visible = false;
+            }
+            else
+            {
+                _controls.amountLabel.Visible = true;
+                _controls.amount.Visible = true;
+                _controls.amountUnitLabel.Visible = true;
+            }
+
+            _controls.switchState.Visible = step.ShowSwitchState();
+            
+            
+
             return this;
         }
     }

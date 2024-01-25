@@ -29,28 +29,27 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.allSteps = new System.Windows.Forms.TreeView();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.addStepButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.switchState = new System.Windows.Forms.CheckBox();
+            this.unitLabel = new System.Windows.Forms.Label();
+            this.amount = new System.Windows.Forms.NumericUpDown();
+            this.amountLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.nextSteps = new System.Windows.Forms.TreeView();
             this.isVisible = new System.Windows.Forms.CheckBox();
             this.long_desc = new System.Windows.Forms.RichTextBox();
             this.short_desc = new System.Windows.Forms.TextBox();
             this.desc_label = new System.Windows.Forms.Label();
             this.steptype = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.switchState = new System.Windows.Forms.CheckBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.addStepButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.treeView2 = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -59,6 +58,7 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.amount)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -74,11 +74,11 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.switchState);
-            this.splitContainer1.Panel2.Controls.Add(this.label4);
-            this.splitContainer1.Panel2.Controls.Add(this.numericUpDown1);
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
+            this.splitContainer1.Panel2.Controls.Add(this.unitLabel);
+            this.splitContainer1.Panel2.Controls.Add(this.amount);
+            this.splitContainer1.Panel2.Controls.Add(this.amountLabel);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.treeView1);
+            this.splitContainer1.Panel2.Controls.Add(this.nextSteps);
             this.splitContainer1.Panel2.Controls.Add(this.isVisible);
             this.splitContainer1.Panel2.Controls.Add(this.long_desc);
             this.splitContainer1.Panel2.Controls.Add(this.short_desc);
@@ -89,34 +89,112 @@
             this.splitContainer1.SplitterDistance = 265;
             this.splitContainer1.TabIndex = 0;
             // 
-            // label4
+            // splitContainer2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(100, 243);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "label4";
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // numericUpDown1
+            // splitContainer2.Panel1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(5, 241);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(90, 20);
-            this.numericUpDown1.TabIndex = 9;
+            this.splitContainer2.Panel1.Controls.Add(this.allSteps);
             // 
-            // label3
+            // splitContainer2.Panel2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 223);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "amount of";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Size = new System.Drawing.Size(265, 450);
+            this.splitContainer2.SplitterDistance = 409;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // allSteps
+            // 
+            this.allSteps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.allSteps.Location = new System.Drawing.Point(0, 0);
+            this.allSteps.Name = "allSteps";
+            this.allSteps.Size = new System.Drawing.Size(265, 409);
+            this.allSteps.TabIndex = 0;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.addStepButton);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.deleteButton);
+            this.splitContainer3.Size = new System.Drawing.Size(265, 37);
+            this.splitContainer3.SplitterDistance = 177;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // addStepButton
+            // 
+            this.addStepButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addStepButton.Location = new System.Drawing.Point(0, 0);
+            this.addStepButton.Name = "addStepButton";
+            this.addStepButton.Size = new System.Drawing.Size(177, 37);
+            this.addStepButton.TabIndex = 0;
+            this.addStepButton.Text = "Ajouter";
+            this.addStepButton.UseVisualStyleBackColor = true;
+            this.addStepButton.Click += new System.EventHandler(this.addStepButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.DarkRed;
+            this.deleteButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deleteButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.deleteButton.Location = new System.Drawing.Point(0, 0);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(84, 37);
+            this.deleteButton.TabIndex = 0;
+            this.deleteButton.Text = "Supprimer";
+            this.deleteButton.UseMnemonic = false;
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // switchState
+            // 
+            this.switchState.AutoSize = true;
+            this.switchState.Location = new System.Drawing.Point(5, 242);
+            this.switchState.Name = "switchState";
+            this.switchState.Size = new System.Drawing.Size(80, 17);
+            this.switchState.TabIndex = 11;
+            this.switchState.Text = "Interrupteur";
+            this.switchState.UseVisualStyleBackColor = true;
+            // 
+            // unitLabel
+            // 
+            this.unitLabel.AutoSize = true;
+            this.unitLabel.Location = new System.Drawing.Point(100, 243);
+            this.unitLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.unitLabel.Name = "unitLabel";
+            this.unitLabel.Size = new System.Drawing.Size(35, 13);
+            this.unitLabel.TabIndex = 10;
+            this.unitLabel.Text = "label4";
+            // 
+            // amount
+            // 
+            this.amount.Location = new System.Drawing.Point(5, 241);
+            this.amount.Margin = new System.Windows.Forms.Padding(2);
+            this.amount.Name = "amount";
+            this.amount.Size = new System.Drawing.Size(90, 20);
+            this.amount.TabIndex = 9;
+            // 
+            // amountLabel
+            // 
+            this.amountLabel.AutoSize = true;
+            this.amountLabel.Location = new System.Drawing.Point(4, 223);
+            this.amountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.Size = new System.Drawing.Size(54, 13);
+            this.amountLabel.TabIndex = 8;
+            this.amountLabel.Text = "amount of";
+            this.amountLabel.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -127,12 +205,12 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Etapes débloquées";
             // 
-            // treeView1
+            // nextSteps
             // 
-            this.treeView1.Location = new System.Drawing.Point(303, 239);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(219, 155);
-            this.treeView1.TabIndex = 6;
+            this.nextSteps.Location = new System.Drawing.Point(303, 239);
+            this.nextSteps.Name = "nextSteps";
+            this.nextSteps.Size = new System.Drawing.Size(219, 155);
+            this.nextSteps.TabIndex = 6;
             // 
             // isVisible
             // 
@@ -185,82 +263,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Type";
             // 
-            // switchState
-            // 
-            this.switchState.AutoSize = true;
-            this.switchState.Location = new System.Drawing.Point(5, 242);
-            this.switchState.Name = "switchState";
-            this.switchState.Size = new System.Drawing.Size(80, 17);
-            this.switchState.TabIndex = 11;
-            this.switchState.Text = "Interrupteur";
-            this.switchState.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.treeView2);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(265, 450);
-            this.splitContainer2.SplitterDistance = 410;
-            this.splitContainer2.TabIndex = 0;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.addStepButton);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.deleteButton);
-            this.splitContainer3.Size = new System.Drawing.Size(265, 36);
-            this.splitContainer3.SplitterDistance = 177;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // addStepButton
-            // 
-            this.addStepButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addStepButton.Location = new System.Drawing.Point(0, 0);
-            this.addStepButton.Name = "addStepButton";
-            this.addStepButton.Size = new System.Drawing.Size(177, 36);
-            this.addStepButton.TabIndex = 0;
-            this.addStepButton.Text = "Ajouter";
-            this.addStepButton.UseVisualStyleBackColor = true;
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.BackColor = System.Drawing.Color.DarkRed;
-            this.deleteButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.deleteButton.Location = new System.Drawing.Point(0, 0);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(84, 36);
-            this.deleteButton.TabIndex = 0;
-            this.deleteButton.Text = "Supprimer";
-            this.deleteButton.UseMnemonic = false;
-            this.deleteButton.UseVisualStyleBackColor = false;
-            // 
-            // treeView2
-            // 
-            this.treeView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView2.Location = new System.Drawing.Point(0, 0);
-            this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(265, 410);
-            this.treeView2.TabIndex = 0;
-            // 
             // StepForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,7 +282,6 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -289,6 +290,7 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.amount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -302,16 +304,16 @@
         private System.Windows.Forms.Label desc_label;
         private System.Windows.Forms.RichTextBox long_desc;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView nextSteps;
         private System.Windows.Forms.CheckBox isVisible;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label amountLabel;
+        private System.Windows.Forms.Label unitLabel;
+        private System.Windows.Forms.NumericUpDown amount;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.CheckBox switchState;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Button addStepButton;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.TreeView treeView2;
+        private System.Windows.Forms.TreeView allSteps;
     }
 }

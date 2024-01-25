@@ -19,7 +19,7 @@ namespace QuestManager.Models
 
         public Step()
         {
-            Type = StepType.Custom;
+            Type = StepType.Variable;
             GameDataId = 0;
             Description = string.Empty;
             Amount = 0;
@@ -28,6 +28,8 @@ namespace QuestManager.Models
         }
 
         public bool ShowAmount() => !(new List<StepType>() { StepType.Switch, StepType.TalkingTo, StepType.Location }.Contains(Type));
+
+        public bool ShowSwitchState() => StepType.Switch == Type;
 
         public bool ShowGameDataId() => !(new List<StepType>() { StepType.TalkingTo, StepType.Location }.Contains(Type));
 
