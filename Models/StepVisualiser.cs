@@ -151,6 +151,7 @@ namespace QuestManager.Models
 
                 _controls.amountLabel.Text = step.AmountLabel();
                 _controls.amountUnitLabel.Text = step.AmountUnit();
+                _controls.amount.Value = step.Amount;
             }
 
             _controls.switchState.Visible = step.ShowSwitchState();

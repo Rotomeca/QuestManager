@@ -69,7 +69,67 @@ namespace QuestManager
             if (_manager?.Visualiser?.CurrentStep != null && newType != _manager.Visualiser.CurrentStep.Type)
             {
                 _manager.Visualiser.CurrentStep.Type = newType;
+                _manager.UpdateName().Visualiser.UpdateStep();
+            }
+        }
+
+        private void gameDataId_ValueChanged(object sender, EventArgs e)
+        {
+            int id = (int)Math.Round((sender as NumericUpDown).Value);
+            if (_manager?.Visualiser.CurrentStep != null && id != _manager.Visualiser.CurrentStep.GameDataId)
+            {
+                _manager.Visualiser.CurrentStep.GameDataId = (uint)id;
+                _manager.UpdateName().Visualiser.UpdateStep();
+            }
+        }
+
+        private void amount_ValueChanged(object sender, EventArgs e)
+        {
+            int value = (int)Math.Round((sender as NumericUpDown).Value);
+            if (_manager?.Visualiser.CurrentStep != null && value != _manager.Visualiser.CurrentStep.Amount)
+            {
+                _manager.Visualiser.CurrentStep.Amount = value;
+                _manager.UpdateName().Visualiser.UpdateStep();
+            }
+        }
+
+        private void isVisible_CheckedChanged(object sender, EventArgs e)
+        {
+            bool value = !(sender as CheckBox).Checked;
+            if (_manager?.Visualiser.CurrentStep != null && value != _manager.Visualiser.CurrentStep.IsHidden)
+            {
+                _manager.Visualiser.CurrentStep.IsHidden = value;
+                _manager.UpdateName().Visualiser.UpdateStep();
+            }
+        }
+
+        private void short_desc_TextChanged(object sender, EventArgs e)
+        {
+            string value = (sender as TextBox).Text;
+            if (_manager?.Visualiser.CurrentStep != null && value != _manager.Visualiser.CurrentStep.Description)
+            {
+                _manager.Visualiser.CurrentStep.Description = value;
+                _manager.UpdateName().Visualiser.UpdateStep();
+            }
+        }
+
+        private void long_desc_TextChanged(object sender, EventArgs e)
+        {
+            string value = (sender as RichTextBox).Text;
+            if (_manager?.Visualiser.CurrentStep != null && value != _manager.Visualiser.CurrentStep.Description)
+            {
+                _manager.Visualiser.CurrentStep.Description = value;
                 _manager.Visualiser.UpdateStep();
+            }
+        }
+
+        private void switchState_CheckedChanged(object sender, EventArgs e)
+        {
+            int state = (sender as CheckBox).Checked ? 1 : 0;
+            if (_manager?.Visualiser.CurrentStep != null && state != _manager.Visualiser.CurrentStep.Amount)
+            {
+                _manager.Visualiser.CurrentStep.Amount = state;
+                _manager.UpdateName().Visualiser.UpdateStep();
             }
         }
     }

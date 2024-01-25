@@ -43,11 +43,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.nextSteps = new System.Windows.Forms.TreeView();
             this.isVisible = new System.Windows.Forms.CheckBox();
-            this.long_desc = new System.Windows.Forms.RichTextBox();
             this.short_desc = new System.Windows.Forms.TextBox();
             this.desc_label = new System.Windows.Forms.Label();
             this.steptype = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.long_desc = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -76,6 +76,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.long_desc);
             this.splitContainer1.Panel2.Controls.Add(this.gameDataId);
             this.splitContainer1.Panel2.Controls.Add(this.gameDataIdLabel);
             this.splitContainer1.Panel2.Controls.Add(this.switchState);
@@ -89,7 +90,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.desc_label);
             this.splitContainer1.Panel2.Controls.Add(this.steptype);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Panel2.Controls.Add(this.long_desc);
             this.splitContainer1.Size = new System.Drawing.Size(684, 291);
             this.splitContainer1.SplitterDistance = 149;
             this.splitContainer1.TabIndex = 0;
@@ -165,10 +165,16 @@
             // gameDataId
             // 
             this.gameDataId.Location = new System.Drawing.Point(202, 6);
-            this.gameDataId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gameDataId.Margin = new System.Windows.Forms.Padding(2);
+            this.gameDataId.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.gameDataId.Name = "gameDataId";
             this.gameDataId.Size = new System.Drawing.Size(90, 20);
             this.gameDataId.TabIndex = 13;
+            this.gameDataId.ValueChanged += new System.EventHandler(this.gameDataId_ValueChanged);
             // 
             // gameDataIdLabel
             // 
@@ -190,6 +196,7 @@
             this.switchState.TabIndex = 11;
             this.switchState.Text = "Interrupteur";
             this.switchState.UseVisualStyleBackColor = true;
+            this.switchState.CheckedChanged += new System.EventHandler(this.switchState_CheckedChanged);
             // 
             // unitLabel
             // 
@@ -204,10 +211,16 @@
             // amount
             // 
             this.amount.Location = new System.Drawing.Point(5, 241);
-            this.amount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.amount.Margin = new System.Windows.Forms.Padding(2);
+            this.amount.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.amount.Name = "amount";
             this.amount.Size = new System.Drawing.Size(90, 20);
             this.amount.TabIndex = 9;
+            this.amount.ValueChanged += new System.EventHandler(this.amount_ValueChanged);
             // 
             // amountLabel
             // 
@@ -245,14 +258,7 @@
             this.isVisible.TabIndex = 5;
             this.isVisible.Text = "Visible ?";
             this.isVisible.UseVisualStyleBackColor = true;
-            // 
-            // long_desc
-            // 
-            this.long_desc.Location = new System.Drawing.Point(6, 69);
-            this.long_desc.Name = "long_desc";
-            this.long_desc.Size = new System.Drawing.Size(272, 129);
-            this.long_desc.TabIndex = 4;
-            this.long_desc.Text = "";
+            this.isVisible.CheckedChanged += new System.EventHandler(this.isVisible_CheckedChanged);
             // 
             // short_desc
             // 
@@ -260,6 +266,7 @@
             this.short_desc.Name = "short_desc";
             this.short_desc.Size = new System.Drawing.Size(272, 20);
             this.short_desc.TabIndex = 3;
+            this.short_desc.TextChanged += new System.EventHandler(this.short_desc_TextChanged);
             // 
             // desc_label
             // 
@@ -287,6 +294,15 @@
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Type";
+            // 
+            // long_desc
+            // 
+            this.long_desc.Location = new System.Drawing.Point(6, 69);
+            this.long_desc.Name = "long_desc";
+            this.long_desc.Size = new System.Drawing.Size(272, 129);
+            this.long_desc.TabIndex = 3;
+            this.long_desc.Text = "";
+            this.long_desc.TextChanged += new System.EventHandler(this.long_desc_TextChanged);
             // 
             // StepForm
             // 

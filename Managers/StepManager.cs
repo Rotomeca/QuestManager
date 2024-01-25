@@ -47,7 +47,7 @@ namespace QuestManager.Managers
         public StepManager Add(Step step)
         {
             _steps.Add(step);
-            _tree.Nodes.Add(new TreeNode(_NodeName(Count, step)));
+            _tree.Nodes.Add(new TreeNode(_NodeName(step)));
 
             _visualiser.ChangeStep(step);
 
@@ -78,16 +78,23 @@ namespace QuestManager.Managers
 
         private void _GenerateTree()
         {
-            uint it = 0;
             foreach (var step in _steps)
             {
-                _tree.Nodes.Add(_NodeName((int)(++it), step));
+                _tree.Nodes.Add(_NodeName(step));
             }
         }
 
-        private string _NodeName(int index, Step step)
+        private string _NodeName(Step step)
         {
-            return $"Etape {index} - {Enum.GetName(step.Type.GetType(), step.Type)}";
+            return step.ToString();
+        }
+
+        public StepManager UpdateName()
+        {
+            int currentIndex = _steps.IndexOf(_visualiser.CurrentStep);
+            _tree.Nodes[currentIndex].Text = _steps[currentIndex].ToString();
+
+            return this;
         }
     }
 }

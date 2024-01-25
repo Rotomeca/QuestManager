@@ -94,5 +94,46 @@ namespace QuestManager.Models
 
             return label;
         }
+
+        public override string ToString()
+        {
+            string str;
+            switch (Type)
+            {
+                case StepType.Variable:
+                    str = $"La variable {GameDataId} doit atteindre la valeur {Amount}";
+                    break;
+                case StepType.Switch:
+                    str = $"L'interrupteur {GameDataId} {(Amount == 1 ? "doit" : "ne doit pas")} être activé";
+                    break;
+                case StepType.Location:
+                    str = $"Aller à {Description}";
+                    break;
+                case StepType.TalkingTo:
+                    str = $"Parler à {Description}";
+                    break;
+                case StepType.Kill:
+                    str = $"Tuer {Amount} ennemi{(Amount > 1 ? "s" : string.Empty)} avec l'id {GameDataId}";
+                    break;
+                case StepType.GetItem:
+                    str = $"Obtenir {Amount} objets avec l'id {GameDataId}";
+                    break;
+                case StepType.GetArmor:
+                    str = $"Obtenir {Amount} armures avec l'id {GameDataId}";
+                    break;
+                case StepType.GetWeapon:
+                    str = $"Obtenir {Amount} armes avec l'id {GameDataId}";
+                    break;
+                case StepType.Custom:
+                    str = "Personnalisée";
+                    break;
+                default:
+                    throw new NotSupportedException();
+            }
+
+            if (IsHidden) str = $"({str})";
+
+            return str;
+        }
     }
 }
