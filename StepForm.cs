@@ -36,11 +36,12 @@ namespace QuestManager
                 .InitAmount(amountLabel, amount, unitLabel)
                 .InitDescription(desc_label, long_desc, short_desc)
                 .InitIsVisible(isVisible)
-                .InitNextSteps(nextSteps)
+                .InitNextSteps(nextSteps, listBox1)
                 .InitGameDataId(gameDataIdLabel, gameDataId);
 
             _manager = new StepManager(allSteps, initialiser);
-            
+            _manager.Visualiser.UpdateNextSteps();
+            _SetNextStupButtonStyle(listBox1);
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -51,11 +52,13 @@ namespace QuestManager
         private void addStepButton_Click(object sender, EventArgs e)
         {
             _manager.Add();
+            _manager.Visualiser.UpdateNextSteps();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             _manager.RemoveCurrent();
+            _manager.Visualiser.UpdateNextSteps();
         }
 
         private void label3_Click_1(object sender, EventArgs e)
@@ -115,11 +118,14 @@ namespace QuestManager
 
         private void long_desc_TextChanged(object sender, EventArgs e)
         {
-            string value = (sender as RichTextBox).Text;
+            RichTextBox desc = sender as RichTextBox;
+            int cursorPos = desc.SelectionStart;
+            string value = desc.Text;
             if (_manager?.Visualiser.CurrentStep != null && value != _manager.Visualiser.CurrentStep.Description)
             {
                 _manager.Visualiser.CurrentStep.Description = value;
                 _manager.Visualiser.UpdateStep();
+                desc.SelectionStart = cursorPos;
             }
         }
 
@@ -130,6 +136,40 @@ namespace QuestManager
             {
                 _manager.Visualiser.CurrentStep.Amount = state;
                 _manager.UpdateName().Visualiser.UpdateStep();
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _SetNextStupButtonStyle(sender as ListBox);
+        }
+
+        private void _SetNextStupButtonStyle(ListBox sender)
+        {
+            if (sender.SelectedIndex == -1)
+            {
+                addNextStepButton.Enabled = false;
+                removeNextStepButton.Enabled = false;
+            }
+            else
+            {
+                addNextStepButton.Enabled = true;
+                removeNextStepButton.Enabled = true;
+            }
+        }
+
+        private void addNextStepButton_Click(object sender, EventArgs e)
+        {
+            if (!_manager.Visualiser.CurrentStep.NextSteps.Contains(listBox1.SelectedIndex))
+            {
+                _manager.Visualiser.CurrentStep.NextSteps.Add(listBox1.SelectedIndex);
+                _manager.Visualiser.UpdateStep();
+                listBox1.SelectedIndex = -1;
+                _SetNextStupButtonStyle(listBox1);
+            }
+            else
+            {
+                MessageBox.Show("Impossible d'ajouter une étape qui éxiste déjà !", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

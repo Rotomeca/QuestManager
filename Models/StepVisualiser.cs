@@ -24,7 +24,7 @@ namespace QuestManager.Models
             public Label amountUnitLabel;
             public Label gameDataIdLabel;
             public GameDataId gameDataId;
-             
+            public ListBox allSteps;
             public TreeView nextSteps;
            
             private Data() {}
@@ -73,9 +73,10 @@ namespace QuestManager.Models
                 return this;
             }
 
-            public Initialiser InitNextSteps(TreeView nextSteps)
+            public Initialiser InitNextSteps(TreeView nextSteps, ListBox allSteps)
             {
                 _controls.nextSteps = nextSteps;
+                _controls.allSteps = allSteps;
                 return this;
             }
 
@@ -109,7 +110,7 @@ namespace QuestManager.Models
         {
             _currentStep = step;
             
-            return this.UpdateStep();
+            return UpdateStep();
         }
 
         public StepVisualiser UpdateStep()
@@ -170,6 +171,23 @@ namespace QuestManager.Models
                 _controls.gameDataId.Visible = false;
             }
 
+            return UpdateNextSteps();
+        }
+    
+        public StepVisualiser UpdateNextSteps()
+        {
+            _controls.allSteps.Items.Clear();
+
+            for (int i = 0, len = Manager.Instance.QuestManager.Visualiser.CurrentQuest.Steps.Count; i < len; ++i)
+            {
+                _controls.allSteps.Items.Add($"{i + 1} : {Manager.Instance.QuestManager.Visualiser.CurrentQuest.Steps[i]}");
+            }
+
+            _controls.nextSteps.Nodes.Clear();
+            foreach (var item in _currentStep.NextSteps)
+            {
+                _controls.nextSteps.Nodes.Add(item.ToString());
+            }
             return this;
         }
     }

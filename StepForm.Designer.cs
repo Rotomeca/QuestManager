@@ -34,6 +34,7 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.addStepButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.long_desc = new System.Windows.Forms.RichTextBox();
             this.gameDataId = new System.Windows.Forms.NumericUpDown();
             this.gameDataIdLabel = new System.Windows.Forms.Label();
             this.switchState = new System.Windows.Forms.CheckBox();
@@ -47,7 +48,9 @@
             this.desc_label = new System.Windows.Forms.Label();
             this.steptype = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.long_desc = new System.Windows.Forms.RichTextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.addNextStepButton = new System.Windows.Forms.Button();
+            this.removeNextStepButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -76,6 +79,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.removeNextStepButton);
+            this.splitContainer1.Panel2.Controls.Add(this.addNextStepButton);
+            this.splitContainer1.Panel2.Controls.Add(this.listBox1);
             this.splitContainer1.Panel2.Controls.Add(this.long_desc);
             this.splitContainer1.Panel2.Controls.Add(this.gameDataId);
             this.splitContainer1.Panel2.Controls.Add(this.gameDataIdLabel);
@@ -162,6 +168,15 @@
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // long_desc
+            // 
+            this.long_desc.Location = new System.Drawing.Point(6, 69);
+            this.long_desc.Name = "long_desc";
+            this.long_desc.Size = new System.Drawing.Size(272, 129);
+            this.long_desc.TabIndex = 3;
+            this.long_desc.Text = "";
+            this.long_desc.TextChanged += new System.EventHandler(this.long_desc_TextChanged);
+            // 
             // gameDataId
             // 
             this.gameDataId.Location = new System.Drawing.Point(202, 6);
@@ -236,7 +251,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(365, 53);
+            this.label2.Location = new System.Drawing.Point(360, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 7;
@@ -244,9 +259,10 @@
             // 
             // nextSteps
             // 
-            this.nextSteps.Location = new System.Drawing.Point(304, 69);
+            this.nextSteps.Enabled = false;
+            this.nextSteps.Location = new System.Drawing.Point(434, 69);
             this.nextSteps.Name = "nextSteps";
-            this.nextSteps.Size = new System.Drawing.Size(219, 129);
+            this.nextSteps.Size = new System.Drawing.Size(89, 134);
             this.nextSteps.TabIndex = 6;
             // 
             // isVisible
@@ -295,14 +311,33 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Type";
             // 
-            // long_desc
+            // listBox1
             // 
-            this.long_desc.Location = new System.Drawing.Point(6, 69);
-            this.long_desc.Name = "long_desc";
-            this.long_desc.Size = new System.Drawing.Size(272, 129);
-            this.long_desc.TabIndex = 3;
-            this.long_desc.Text = "";
-            this.long_desc.TextChanged += new System.EventHandler(this.long_desc_TextChanged);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(299, 69);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(97, 134);
+            this.listBox1.TabIndex = 14;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // addNextStepButton
+            // 
+            this.addNextStepButton.Location = new System.Drawing.Point(397, 97);
+            this.addNextStepButton.Name = "addNextStepButton";
+            this.addNextStepButton.Size = new System.Drawing.Size(36, 23);
+            this.addNextStepButton.TabIndex = 15;
+            this.addNextStepButton.Text = "=>";
+            this.addNextStepButton.UseVisualStyleBackColor = true;
+            this.addNextStepButton.Click += new System.EventHandler(this.addNextStepButton_Click);
+            // 
+            // removeNextStepButton
+            // 
+            this.removeNextStepButton.Location = new System.Drawing.Point(397, 146);
+            this.removeNextStepButton.Name = "removeNextStepButton";
+            this.removeNextStepButton.Size = new System.Drawing.Size(36, 23);
+            this.removeNextStepButton.TabIndex = 16;
+            this.removeNextStepButton.Text = "<=";
+            this.removeNextStepButton.UseVisualStyleBackColor = true;
             // 
             // StepForm
             // 
@@ -359,5 +394,8 @@
         private System.Windows.Forms.TreeView allSteps;
         private System.Windows.Forms.Label gameDataIdLabel;
         private System.Windows.Forms.NumericUpDown gameDataId;
+        private System.Windows.Forms.Button removeNextStepButton;
+        private System.Windows.Forms.Button addNextStepButton;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

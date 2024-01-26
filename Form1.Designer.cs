@@ -286,6 +286,7 @@
             // 
             // steps
             // 
+            this.steps.Cursor = System.Windows.Forms.Cursors.Hand;
             this.steps.Dock = System.Windows.Forms.DockStyle.Fill;
             this.steps.Location = new System.Drawing.Point(0, 0);
             this.steps.Name = "steps";
