@@ -127,6 +127,11 @@ namespace QuestManager.Managers
             Visualiser.CurrentQuest.Location = location;
         }
 
+        public void TreeUpdated()
+        {
+            Visualiser.Update();
+        }
+
         private void NodeClicked(object sender, TreeNodeMouseClickEventArgs e)
         {
             SelectNode(e.Node);

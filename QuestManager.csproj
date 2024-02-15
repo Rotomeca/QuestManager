@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\SaveData.cs" />
     <Compile Include="Enums\QuestStepEnum.cs" />
     <Compile Include="Interfaces\IBaseItem.cs" />
     <Compile Include="Classes\UnknownObject.cs" />
@@ -61,6 +62,7 @@
     </Compile>
     <Compile Include="Manager.cs" />
     <Compile Include="Managers\QuestManager.cs" />
+    <Compile Include="Managers\Settings.cs" />
     <Compile Include="Managers\StepManager.cs" />
     <Compile Include="MaxModifier.cs">
       <SubType>Form</SubType>

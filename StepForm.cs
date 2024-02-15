@@ -160,17 +160,54 @@ namespace QuestManager
 
         private void addNextStepButton_Click(object sender, EventArgs e)
         {
-            if (!_manager.Visualiser.CurrentStep.NextSteps.Contains(listBox1.SelectedIndex))
+            var index = listBox1.SelectedIndex + 1;
+            if (!_manager.Visualiser.CurrentStep.NextSteps.Contains(index) && Manager.Instance.QuestManager.Visualiser.CurrentQuest.Steps.IndexOf(_manager.Visualiser.CurrentStep) != listBox1.SelectedIndex)
             {
-                _manager.Visualiser.CurrentStep.NextSteps.Add(listBox1.SelectedIndex);
+                _manager.Visualiser.CurrentStep.NextSteps.Add(index);
                 _manager.Visualiser.UpdateStep();
                 listBox1.SelectedIndex = -1;
                 _SetNextStupButtonStyle(listBox1);
             }
             else
             {
-                MessageBox.Show("Impossible d'ajouter une étape qui éxiste déjà !", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Impossible d'ajouter une étape qui éxiste déjà \r\nou d'ajouter cette quête !", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void process1_Exited(object sender, EventArgs e)
+        {
+
+        }
+
+        private void removeNextStepButton_Click(object sender, EventArgs e)
+        {
+            var index = listBox1.SelectedIndex + 1;
+            if (_manager.Visualiser.CurrentStep.NextSteps.Contains(index))
+            {
+                _manager.Visualiser.CurrentStep.NextSteps.Remove(index);
+                _manager.Visualiser.UpdateStep();
+                listBox1.SelectedIndex = -1;
+                _SetNextStupButtonStyle(listBox1);
+            }
+        }
+
+        public List<string> GetNextSteps()
+        {
+            List<string> steps = new List<string>();
+
+            int step_id;
+            foreach (var item in _manager.Visualiser.CurrentStep.NextSteps)
+            {
+                step_id = item - 1;
+                steps.Add(_manager[step_id].ToString());
+            }
+
+            return steps;
+        }
+
+        private void allSteps_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
         }
     }
 }

@@ -65,6 +65,7 @@
             this.fghfhgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.stepModeSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainContainers)).BeginInit();
             this.mainContainers.Panel1.SuspendLayout();
@@ -81,7 +82,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zezToolStripMenuItem});
+            this.zezToolStripMenuItem,
+            this.stepModeSetting});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -104,14 +106,14 @@
             // nouveauToolStripMenuItem1
             // 
             this.nouveauToolStripMenuItem1.Name = "nouveauToolStripMenuItem1";
-            this.nouveauToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.nouveauToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.nouveauToolStripMenuItem1.Text = "Nouveau";
             this.nouveauToolStripMenuItem1.Click += new System.EventHandler(this.nouveauToolStripMenuItem1_Click);
             // 
             // chargerToolStripMenuItem
             // 
             this.chargerToolStripMenuItem.Name = "chargerToolStripMenuItem";
-            this.chargerToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.chargerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.chargerToolStripMenuItem.Text = "Charger";
             this.chargerToolStripMenuItem.Click += new System.EventHandler(this.chargerToolStripMenuItem_Click);
             // 
@@ -119,7 +121,7 @@
             // 
             this.sauvegarderToolStripMenuItem1.Enabled = false;
             this.sauvegarderToolStripMenuItem1.Name = "sauvegarderToolStripMenuItem1";
-            this.sauvegarderToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.sauvegarderToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.sauvegarderToolStripMenuItem1.Text = "Sauvegarder";
             this.sauvegarderToolStripMenuItem1.Click += new System.EventHandler(this.sauvegarderToolStripMenuItem1_Click);
             // 
@@ -127,7 +129,7 @@
             // 
             this.sauvegarderSousToolStripMenuItem1.Enabled = false;
             this.sauvegarderSousToolStripMenuItem1.Name = "sauvegarderSousToolStripMenuItem1";
-            this.sauvegarderSousToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.sauvegarderSousToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.sauvegarderSousToolStripMenuItem1.Text = "Sauvegarder sous...";
             this.sauvegarderSousToolStripMenuItem1.Click += new System.EventHandler(this.sauvegarderSousToolStripMenuItem1_Click);
             // 
@@ -409,6 +411,13 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // stepModeSetting
+            // 
+            this.stepModeSetting.Name = "stepModeSetting";
+            this.stepModeSetting.Size = new System.Drawing.Size(186, 20);
+            this.stepModeSetting.Text = "Mode des étapes : SUPER LONG";
+            this.stepModeSetting.Click += new System.EventHandler(this.modeDesÉtapesSUPERLONGToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,6 +486,7 @@
         private System.Windows.Forms.ToolStripMenuItem sauvegarderSousToolStripMenuItem1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem stepModeSetting;
     }
 }
 

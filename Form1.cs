@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace QuestManager
 {
@@ -205,14 +206,14 @@ namespace QuestManager
         {
             if (_filePath != null && _filePath != string.Empty)
             {
-                ViewBag = Newtonsoft.Json.JsonConvert.SerializeObject(Manager.Instance.QuestManager.Quests);
+                ViewBag = AppManager.GetSave(); //Newtonsoft.Json.JsonConvert.SerializeObject(Manager.Instance.QuestManager.Quests);
                 _saveFile(_filePath);
             }
         }
 
         private void sauvegarderSousToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ViewBag = Newtonsoft.Json.JsonConvert.SerializeObject(Manager.Instance.QuestManager.Quests);
+            ViewBag = AppManager.GetSave();//Newtonsoft.Json.JsonConvert.SerializeObject(Manager.Instance.QuestManager.Quests);
             saveFileDialog1.FileName = "questsData";
             saveFileDialog1.Filter = "Json Files (*.json)|*.json";
             saveFileDialog1.AddExtension = true;
@@ -263,8 +264,19 @@ namespace QuestManager
 
             if (null == Manager.Instance.QuestManager) nouveauToolStripMenuItem1_Click(this, new EventArgs());
 
-            Manager.Instance.Load(readingText);
+            //Manager.Instance.Load(readingText);
+
+            try
+            {
+                AppManager.Load(readingText);
+            }
+            catch (Exception)
+            {
+                Manager.Instance.Load(readingText);
+            }
+
             SetFilePath(path);
+            _updateSettingStepModeStep();
 
             Icon = Resources.BlinkStickOn;
             if (!sauvegarderToolStripMenuItem1.Enabled) sauvegarderToolStripMenuItem1.Enabled = true;
@@ -282,6 +294,8 @@ namespace QuestManager
             StepForm dialog = new StepForm();
             dialog.FormClosed += (object dialogSender, FormClosedEventArgs ev) =>
             {
+                Manager.Instance.QuestManager.TreeUpdated();
+
                 ((StepForm)dialogSender).Dispose();
             };
             dialog.ShowDialog();
@@ -300,6 +314,23 @@ namespace QuestManager
         private void steps_MouseDown(object sender, MouseEventArgs e)
         {
             steps_Click(sender, e);
+        }
+
+        private void modeDesÉtapesSUPERLONGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _updateSettingStepMode();
+        }
+
+        private void _updateSettingStepMode()
+        {
+            Settings.Instance.NameInsteadOfDesc = !Settings.Instance.NameInsteadOfDesc;
+            _updateSettingStepModeStep();
+        }
+
+        private void _updateSettingStepModeStep()
+        {
+            stepModeSetting.Text = $"Mode des étapes : {(Settings.Instance.NameInsteadOfDesc ? "Nom" : "Description")}";
+            Manager.Instance.QuestManager.TreeUpdated();
         }
     }
 }

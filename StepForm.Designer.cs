@@ -34,6 +34,9 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.addStepButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.removeNextStepButton = new System.Windows.Forms.Button();
+            this.addNextStepButton = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.long_desc = new System.Windows.Forms.RichTextBox();
             this.gameDataId = new System.Windows.Forms.NumericUpDown();
             this.gameDataIdLabel = new System.Windows.Forms.Label();
@@ -48,9 +51,7 @@
             this.desc_label = new System.Windows.Forms.Label();
             this.steptype = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.addNextStepButton = new System.Windows.Forms.Button();
-            this.removeNextStepButton = new System.Windows.Forms.Button();
+            this.process1 = new System.Diagnostics.Process();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -125,6 +126,7 @@
             this.allSteps.Name = "allSteps";
             this.allSteps.Size = new System.Drawing.Size(149, 262);
             this.allSteps.TabIndex = 0;
+            this.allSteps.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.allSteps_AfterSelect);
             // 
             // splitContainer3
             // 
@@ -167,6 +169,35 @@
             this.deleteButton.UseMnemonic = false;
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // removeNextStepButton
+            // 
+            this.removeNextStepButton.Location = new System.Drawing.Point(397, 146);
+            this.removeNextStepButton.Name = "removeNextStepButton";
+            this.removeNextStepButton.Size = new System.Drawing.Size(36, 23);
+            this.removeNextStepButton.TabIndex = 16;
+            this.removeNextStepButton.Text = "<=";
+            this.removeNextStepButton.UseVisualStyleBackColor = true;
+            this.removeNextStepButton.Click += new System.EventHandler(this.removeNextStepButton_Click);
+            // 
+            // addNextStepButton
+            // 
+            this.addNextStepButton.Location = new System.Drawing.Point(397, 97);
+            this.addNextStepButton.Name = "addNextStepButton";
+            this.addNextStepButton.Size = new System.Drawing.Size(36, 23);
+            this.addNextStepButton.TabIndex = 15;
+            this.addNextStepButton.Text = "=>";
+            this.addNextStepButton.UseVisualStyleBackColor = true;
+            this.addNextStepButton.Click += new System.EventHandler(this.addNextStepButton_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(299, 69);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(97, 134);
+            this.listBox1.TabIndex = 14;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // long_desc
             // 
@@ -311,33 +342,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Type";
             // 
-            // listBox1
+            // process1
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(299, 69);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(97, 134);
-            this.listBox1.TabIndex = 14;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // addNextStepButton
-            // 
-            this.addNextStepButton.Location = new System.Drawing.Point(397, 97);
-            this.addNextStepButton.Name = "addNextStepButton";
-            this.addNextStepButton.Size = new System.Drawing.Size(36, 23);
-            this.addNextStepButton.TabIndex = 15;
-            this.addNextStepButton.Text = "=>";
-            this.addNextStepButton.UseVisualStyleBackColor = true;
-            this.addNextStepButton.Click += new System.EventHandler(this.addNextStepButton_Click);
-            // 
-            // removeNextStepButton
-            // 
-            this.removeNextStepButton.Location = new System.Drawing.Point(397, 146);
-            this.removeNextStepButton.Name = "removeNextStepButton";
-            this.removeNextStepButton.Size = new System.Drawing.Size(36, 23);
-            this.removeNextStepButton.TabIndex = 16;
-            this.removeNextStepButton.Text = "<=";
-            this.removeNextStepButton.UseVisualStyleBackColor = true;
+            this.process1.StartInfo.Domain = "";
+            this.process1.StartInfo.LoadUserProfile = false;
+            this.process1.StartInfo.Password = null;
+            this.process1.StartInfo.StandardErrorEncoding = null;
+            this.process1.StartInfo.StandardOutputEncoding = null;
+            this.process1.StartInfo.UserName = "";
+            this.process1.SynchronizingObject = this;
+            this.process1.Exited += new System.EventHandler(this.process1_Exited);
             // 
             // StepForm
             // 
@@ -397,5 +411,6 @@
         private System.Windows.Forms.Button removeNextStepButton;
         private System.Windows.Forms.Button addNextStepButton;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Diagnostics.Process process1;
     }
 }

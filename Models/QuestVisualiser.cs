@@ -42,6 +42,22 @@ namespace QuestManager.Models
             _giver.Text = _currentQuest.Giver;
             _localization.Text = _currentQuest.Location;
             _isMainQuest.Checked = _currentQuest.QuestType == Enums.Quests.QuestType.Main;
+            Update();
+        }
+
+        private void _UpdateTree(ref TreeView tree, List<string> nodes)
+        {
+            tree.Nodes.Clear();
+
+            for (int i = 0, len = nodes.Count; i < len; ++i)
+            {
+                tree.Nodes.Add($"{i + 1} : {nodes[i]}");
+            }
+        }
+
+        public void Update()
+        {
+            _UpdateTree(ref _stepsView, CurrentQuest.Steps.Select(x => x.ToString()).ToList());
         }
     }
 }

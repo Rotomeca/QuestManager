@@ -98,6 +98,18 @@ namespace QuestManager.Models
         public override string ToString()
         {
             string str;
+
+            if (Settings.Instance.NameInsteadOfDesc) str = string.IsNullOrEmpty(Description) ? _ToStringDesc() : Description;
+            else str = _ToStringDesc();
+
+            if (IsHidden) str = $"({str})";
+
+            return str;
+        }
+
+        private string _ToStringDesc()
+        {
+            string str;
             switch (Type)
             {
                 case StepType.Variable:
@@ -130,8 +142,6 @@ namespace QuestManager.Models
                 default:
                     throw new NotSupportedException();
             }
-
-            if (IsHidden) str = $"({str})";
 
             return str;
         }
