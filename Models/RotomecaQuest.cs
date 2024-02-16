@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-
-using Step = QuestManager.Models.Step;
-using Reward = QuestManager.Classes.UnknownObject;
+﻿using Steps = System.Collections.Generic.List<QuestManager.Models.Step>;
+using Rewards = System.Collections.Generic.List<QuestManager.Models.Reward>;
 using QuestManager.Enums.Quests;
 
 namespace QuestManager.Models
@@ -14,8 +12,8 @@ namespace QuestManager.Models
         public string Giver { get; set; }
         public string Location { get; set; }
         public QuestType QuestType { get; set; }
-        public List<Step> Steps { get; set; }
-        public List<Reward> Rewards { get; set; }
+        public Steps Steps { get; set; }
+        public Rewards Rewards { get; set; }
 
         public RotomecaQuest(int id)
         {
@@ -24,8 +22,8 @@ namespace QuestManager.Models
             Description = string.Empty;
             Giver = string.Empty;
             Location = string.Empty;
-            Steps = new List<Step>();
-            Rewards = new List<Reward>();
+            Steps = new Steps();
+            Rewards = new Rewards();
             QuestType = QuestType.Main;
         }
     }

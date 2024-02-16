@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Classes\SaveData.cs" />
     <Compile Include="Enums\QuestStepEnum.cs" />
+    <Compile Include="Enums\RewardEnum.cs" />
     <Compile Include="Interfaces\IBaseItem.cs" />
     <Compile Include="Classes\UnknownObject.cs" />
     <Compile Include="Enums\QuestEnums.cs" />
@@ -71,6 +72,7 @@
       <DependentUpon>MaxModifier.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\QuestVisualiser.cs" />
+    <Compile Include="Models\Reward.cs" />
     <Compile Include="Models\RotomecaQuest.cs" />
     <Compile Include="Models\Step.cs" />
     <Compile Include="Models\StepVisualiser.cs" />
