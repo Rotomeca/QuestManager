@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuestManager.Enums.Quests.Rewards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,18 @@ namespace QuestManager.Enums.Quests.Rewards
                 case RewardType.Gold: return false;
                 default: return true;
             }
+        }
+    }
+}
+
+namespace QuestManager
+{
+    public static class RewardTypeExt2
+    {
+
+        public static bool HasId(this Models.Reward reward)
+        {
+            return reward.Type.HasId();
         }
     }
 }

@@ -78,6 +78,12 @@
     <Compile Include="Models\StepVisualiser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RewardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RewardForm.Designer.cs">
+      <DependentUpon>RewardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StepForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RewardForm.resx">
+      <DependentUpon>RewardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StepForm.resx">
       <DependentUpon>StepForm.cs</DependentUpon>
