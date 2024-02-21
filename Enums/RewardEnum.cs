@@ -28,6 +28,17 @@ namespace QuestManager.Enums.Quests.Rewards
                 default: return true;
             }
         }
+
+        public static bool HasAmount(this RewardType type)
+        {
+            switch (type)
+            {
+                case RewardType.Switch:
+                case RewardType.Quest:
+                    return false;
+                default: return true;
+            }
+        }
     }
 }
 
@@ -39,6 +50,11 @@ namespace QuestManager
         public static bool HasId(this Models.Reward reward)
         {
             return reward.Type.HasId();
+        }
+
+        public static bool HasAmount(this Models.Reward reward)
+        {
+            return reward.Type.HasAmount();
         }
     }
 }

@@ -332,5 +332,30 @@ namespace QuestManager
             stepModeSetting.Text = $"Mode des étapes : {(Settings.Instance.NameInsteadOfDesc ? "Nom" : "Description")}";
             Manager.Instance.QuestManager.TreeUpdated();
         }
+
+        private void rewards_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void rewards_Click(object sender, EventArgs e)
+        {
+            RewardForm dialog = new RewardForm();
+            dialog.FormClosed += (object dialogSender, FormClosedEventArgs ev) =>
+            {
+                ((RewardForm)dialogSender).Dispose();
+            };
+            dialog.ShowDialog();
+        }
+
+        private void rewards_MouseClick(object sender, MouseEventArgs e)
+        {
+            rewards_Click(sender, e);
+        }
+
+        private void rewards_MouseDown(object sender, MouseEventArgs e)
+        {
+            rewards_Click(sender, e);
+        }
     }
 }

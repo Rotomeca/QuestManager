@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="Manager.cs" />
     <Compile Include="Managers\QuestManager.cs" />
+    <Compile Include="Managers\RewardManager.cs" />
     <Compile Include="Managers\Settings.cs" />
     <Compile Include="Managers\StepManager.cs" />
     <Compile Include="MaxModifier.cs">
@@ -73,6 +74,7 @@
     </Compile>
     <Compile Include="Models\QuestVisualiser.cs" />
     <Compile Include="Models\Reward.cs" />
+    <Compile Include="Models\RewardVisualiser.cs" />
     <Compile Include="Models\RotomecaQuest.cs" />
     <Compile Include="Models\Step.cs" />
     <Compile Include="Models\StepVisualiser.cs" />
