@@ -31,18 +31,18 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.rewardTreeView = new System.Windows.Forms.TreeView();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.addButton = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rewardTypeComboBox = new System.Windows.Forms.ComboBox();
             this.gb2 = new System.Windows.Forms.GroupBox();
-            this.textLabel = new System.Windows.Forms.Label();
-            this.amountField = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.amountField = new System.Windows.Forms.NumericUpDown();
+            this.textLabel = new System.Windows.Forms.Label();
             this.idField = new System.Windows.Forms.NumericUpDown();
             this.questComboBox = new System.Windows.Forms.ComboBox();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.addButton = new System.Windows.Forms.Button();
-            this.removeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -51,16 +51,16 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.gb2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.amountField)).BeginInit();
-            this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.idField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.gb2.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.amountField)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idField)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -105,6 +105,48 @@
             this.rewardTreeView.Name = "rewardTreeView";
             this.rewardTreeView.Size = new System.Drawing.Size(266, 397);
             this.rewardTreeView.TabIndex = 0;
+            this.rewardTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.rewardTreeView_NodeMouseClick);
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.addButton);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.removeButton);
+            this.splitContainer3.Size = new System.Drawing.Size(266, 49);
+            this.splitContainer3.SplitterDistance = 136;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // addButton
+            // 
+            this.addButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addButton.Location = new System.Drawing.Point(0, 0);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(136, 49);
+            this.addButton.TabIndex = 0;
+            this.addButton.Text = "+";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // removeButton
+            // 
+            this.removeButton.BackColor = System.Drawing.Color.Maroon;
+            this.removeButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.removeButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeButton.Location = new System.Drawing.Point(0, 0);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(126, 49);
+            this.removeButton.TabIndex = 0;
+            this.removeButton.Text = "Supprimer";
+            this.removeButton.UseVisualStyleBackColor = false;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -145,24 +187,6 @@
             this.gb2.TabStop = false;
             this.gb2.Text = "Récupérer";
             // 
-            // textLabel
-            // 
-            this.textLabel.AutoSize = true;
-            this.textLabel.Location = new System.Drawing.Point(63, 5);
-            this.textLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.textLabel.Name = "textLabel";
-            this.textLabel.Size = new System.Drawing.Size(46, 13);
-            this.textLabel.TabIndex = 1;
-            this.textLabel.Text = "avec l\'id";
-            this.textLabel.Click += new System.EventHandler(this.label1_Click_1);
-            // 
-            // amountField
-            // 
-            this.amountField.Location = new System.Drawing.Point(3, 3);
-            this.amountField.Name = "amountField";
-            this.amountField.Size = new System.Drawing.Size(54, 20);
-            this.amountField.TabIndex = 0;
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.amountField);
@@ -174,6 +198,24 @@
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(509, 81);
             this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // amountField
+            // 
+            this.amountField.Location = new System.Drawing.Point(3, 3);
+            this.amountField.Name = "amountField";
+            this.amountField.Size = new System.Drawing.Size(54, 20);
+            this.amountField.TabIndex = 0;
+            // 
+            // textLabel
+            // 
+            this.textLabel.AutoSize = true;
+            this.textLabel.Location = new System.Drawing.Point(63, 5);
+            this.textLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.textLabel.Name = "textLabel";
+            this.textLabel.Size = new System.Drawing.Size(46, 13);
+            this.textLabel.TabIndex = 1;
+            this.textLabel.Text = "avec l\'id";
+            this.textLabel.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // idField
             // 
@@ -189,44 +231,6 @@
             this.questComboBox.Name = "questComboBox";
             this.questComboBox.Size = new System.Drawing.Size(121, 21);
             this.questComboBox.TabIndex = 3;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.addButton);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.removeButton);
-            this.splitContainer3.Size = new System.Drawing.Size(266, 49);
-            this.splitContainer3.SplitterDistance = 136;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // addButton
-            // 
-            this.addButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addButton.Location = new System.Drawing.Point(0, 0);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(136, 49);
-            this.addButton.TabIndex = 0;
-            this.addButton.Text = "+";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // removeButton
-            // 
-            this.removeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.removeButton.Location = new System.Drawing.Point(0, 0);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(126, 49);
-            this.removeButton.TabIndex = 0;
-            this.removeButton.Text = "-";
-            this.removeButton.UseVisualStyleBackColor = true;
             // 
             // RewardForm
             // 
@@ -244,17 +248,17 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.gb2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.amountField)).EndInit();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.idField)).EndInit();
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.gb2.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.amountField)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idField)).EndInit();
             this.ResumeLayout(false);
 
         }

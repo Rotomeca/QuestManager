@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Rewards = System.Collections.Generic.List<QuestManager.Models.Reward>;
+
 namespace QuestManager.Managers
 {
     public class RewardManager
     {
         private RewardVisualiser _visualiser;
         private TreeView _rewardTree;
+        private Rewards _Rewards => Manager.Instance.QuestManager.Visualiser.CurrentQuest.Rewards;
 
         public RewardVisualiser Visualiser => _visualiser;
 
@@ -22,9 +25,19 @@ namespace QuestManager.Managers
 
         public void Add()
         {
-            Manager.Instance.QuestManager.Visualiser.CurrentQuest.Rewards.Add(new Reward());
-            _rewardTree.Nodes.Add(Manager.Instance.QuestManager.Visualiser.CurrentQuest.Rewards.Last().ToString());
-            _visualiser.SetReward(Manager.Instance.QuestManager.Visualiser.CurrentQuest.Rewards.Last());
+            Add(new Reward());
+        }
+
+        public void Add(Reward reward)
+        {
+            _Rewards.Add(reward);
+            _rewardTree.Nodes.Add(reward.ToString());
+        }
+
+        public void Remove(int index)
+        {
+            _Rewards.RemoveAt(index);
+            _rewardTree.Nodes.RemoveAt(index);
         }
     }
 }

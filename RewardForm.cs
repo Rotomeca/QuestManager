@@ -37,7 +37,7 @@ namespace QuestManager
                 UpdateEnabled(null != visualiser.Reward);
             };
 
-            if (hasRewards) _manager.Visualiser.SetReward(Manager.Instance.QuestManager.Visualiser.CurrentQuest.Rewards[0]);
+            if (hasRewards) _manager.Visualiser.SetReward(Manager.Instance.QuestManager.Visualiser.CurrentQuest.Rewards.Last());
         }
 
         private bool UpdateEnabled(bool? state = null)
@@ -67,6 +67,16 @@ namespace QuestManager
         {
             _manager.Add();
             UpdateEnabled();
+        }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            _manager.Remove(rewardTreeView.SelectedNode.Index);
+        }
+
+        private void rewardTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
         }
     }
 }
