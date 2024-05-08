@@ -29,7 +29,8 @@ namespace QuestManager.Managers
 
             _GenerateTree();
 
-            if (_steps.Count  < 1 ) {
+            if (_steps.Count < 1)
+            {
                 Add();
             }
 
@@ -86,12 +87,15 @@ namespace QuestManager.Managers
 
         private void _GenerateTree()
         {
-            foreach (var step in _steps)
+            if (_steps.Count > 0)
             {
-                _tree.Nodes.Add(_NodeName(step));
-            }
+                foreach (var step in _steps)
+                {
+                    _tree.Nodes.Add(_NodeName(step));
+                }
 
-            SelectNode(_tree.Nodes[_tree.Nodes.Count - 1]);
+                SelectNode(_tree.Nodes[_tree.Nodes.Count - 1]);
+            }
         }
 
         private string _NodeName(Step step)
