@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\IntEx.cs" />
     <Compile Include="Classes\SaveData.cs" />
     <Compile Include="Enums\QuestStepEnum.cs" />
     <Compile Include="Enums\RewardEnum.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="StepForm.Designer.cs">
       <DependentUpon>StepForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Structures\DurabilityOptions.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

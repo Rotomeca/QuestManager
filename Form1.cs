@@ -343,6 +343,7 @@ namespace QuestManager
             RewardForm dialog = new RewardForm();
             dialog.FormClosed += (object dialogSender, FormClosedEventArgs ev) =>
             {
+                Manager.Instance.QuestManager.TreeUpdated();
                 ((RewardForm)dialogSender).Dispose();
             };
             dialog.ShowDialog();

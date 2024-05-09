@@ -29,7 +29,7 @@ namespace QuestManager
             questComboBox.Items.AddRange(Manager.Instance.QuestManager.Quests.Select(x => x.Name).ToArray());
 
             {
-                var visualiser = new RewardVisualiser(rewardTypeComboBox, questComboBox, amountField, idField, textLabel);
+                var visualiser = new RewardVisualiser(rewardTypeComboBox, questComboBox, amountField, idField, textLabel, customDurability, enableEqpt, enableNewDurability, setCustomDurability, customNewDurabilityMax, durability);
                 _manager = new RewardManager(rewardTreeView, visualiser);
             }
 
@@ -77,6 +77,65 @@ namespace QuestManager
         private void rewardTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
 
+        }
+
+        private void rewardTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void customDurability_CheckedChanged(object sender, EventArgs e)
+        {
+            _manager.Visualiser.Reward.Durability.Active = !_manager.Visualiser.Reward.Durability.Active;
+            _manager.Visualiser.UpdateView();
+        }
+
+        private void enableEqpt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_manager.Visualiser.Reward.Durability.Durabilty > 0) _manager.Visualiser.Reward.Durability.Durabilty = 0;
+            else
+            {
+                _manager.Visualiser.Reward.Durability.Durabilty = (uint)(setCustomDurability.Value == 0 ? 1 : setCustomDurability.Value);
+                setCustomDurability.Value = _manager.Visualiser.Reward.Durability.Durabilty;
+            }
+
+            _manager.Visualiser.UpdateView();
+        }
+
+        private void enableNewDurability_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_manager.Visualiser.Reward.Durability.UpdateMax > 0) _manager.Visualiser.Reward.Durability.UpdateMax = 0;   
+            else
+            {
+                _manager.Visualiser.Reward.Durability.UpdateMax = (int)(customNewDurabilityMax.Value == 0 ? 1 : customNewDurabilityMax.Value);
+                customNewDurabilityMax.Value = _manager.Visualiser.Reward.Durability.UpdateMax;
+            }
+            _manager.Visualiser.UpdateView();
+        }
+
+        private void rewardTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            //_manager.SelectNode(e.Node);
+        }
+
+        private void amountField_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void setCustomDurability_ValueChanged(object sender, EventArgs e)
+        {
+            _manager.Visualiser.Reward.Durability.Durabilty = (uint)((NumericUpDown)sender).Value;
+        }
+
+        private void customNewDurabilityMax_ValueChanged(object sender, EventArgs e)
+        {
+            _manager.Visualiser.Reward.Durability.UpdateMax = (int)((NumericUpDown)sender).Value;
         }
     }
 }

@@ -43,6 +43,12 @@
             this.textLabel = new System.Windows.Forms.Label();
             this.idField = new System.Windows.Forms.NumericUpDown();
             this.questComboBox = new System.Windows.Forms.ComboBox();
+            this.durability = new System.Windows.Forms.GroupBox();
+            this.enableNewDurability = new System.Windows.Forms.CheckBox();
+            this.enableEqpt = new System.Windows.Forms.CheckBox();
+            this.customNewDurabilityMax = new System.Windows.Forms.NumericUpDown();
+            this.customDurability = new System.Windows.Forms.CheckBox();
+            this.setCustomDurability = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,6 +67,9 @@
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.amountField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.idField)).BeginInit();
+            this.durability.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customNewDurabilityMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.setCustomDurability)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -105,6 +114,7 @@
             this.rewardTreeView.Name = "rewardTreeView";
             this.rewardTreeView.Size = new System.Drawing.Size(266, 397);
             this.rewardTreeView.TabIndex = 0;
+            this.rewardTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.rewardTreeView_AfterSelect);
             this.rewardTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.rewardTreeView_NodeMouseClick);
             // 
             // splitContainer3
@@ -152,6 +162,7 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.groupBox1);
             this.flowLayoutPanel1.Controls.Add(this.gb2);
+            this.flowLayoutPanel1.Controls.Add(this.durability);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -176,6 +187,7 @@
             this.rewardTypeComboBox.Name = "rewardTypeComboBox";
             this.rewardTypeComboBox.Size = new System.Drawing.Size(186, 21);
             this.rewardTypeComboBox.TabIndex = 0;
+            this.rewardTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.rewardTypeComboBox_SelectedIndexChanged);
             // 
             // gb2
             // 
@@ -205,6 +217,7 @@
             this.amountField.Name = "amountField";
             this.amountField.Size = new System.Drawing.Size(54, 20);
             this.amountField.TabIndex = 0;
+            this.amountField.ValueChanged += new System.EventHandler(this.amountField_ValueChanged);
             // 
             // textLabel
             // 
@@ -231,6 +244,70 @@
             this.questComboBox.Name = "questComboBox";
             this.questComboBox.Size = new System.Drawing.Size(121, 21);
             this.questComboBox.TabIndex = 3;
+            // 
+            // durability
+            // 
+            this.durability.Controls.Add(this.enableNewDurability);
+            this.durability.Controls.Add(this.enableEqpt);
+            this.durability.Controls.Add(this.customNewDurabilityMax);
+            this.durability.Controls.Add(this.customDurability);
+            this.durability.Controls.Add(this.setCustomDurability);
+            this.durability.Location = new System.Drawing.Point(3, 163);
+            this.durability.Name = "durability";
+            this.durability.Size = new System.Drawing.Size(512, 100);
+            this.durability.TabIndex = 3;
+            this.durability.TabStop = false;
+            this.durability.Text = "Modifier la durabilité";
+            this.durability.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // enableNewDurability
+            // 
+            this.enableNewDurability.AutoSize = true;
+            this.enableNewDurability.Location = new System.Drawing.Point(191, 39);
+            this.enableNewDurability.Name = "enableNewDurability";
+            this.enableNewDurability.Size = new System.Drawing.Size(113, 17);
+            this.enableNewDurability.TabIndex = 8;
+            this.enableNewDurability.Text = "Nouvelle durabilité";
+            this.enableNewDurability.UseVisualStyleBackColor = true;
+            this.enableNewDurability.CheckedChanged += new System.EventHandler(this.enableNewDurability_CheckedChanged);
+            // 
+            // enableEqpt
+            // 
+            this.enableEqpt.AutoSize = true;
+            this.enableEqpt.Location = new System.Drawing.Point(6, 39);
+            this.enableEqpt.Name = "enableEqpt";
+            this.enableEqpt.Size = new System.Drawing.Size(147, 17);
+            this.enableEqpt.TabIndex = 7;
+            this.enableEqpt.Text = "Durabilité de l\'équipement";
+            this.enableEqpt.UseVisualStyleBackColor = true;
+            this.enableEqpt.CheckedChanged += new System.EventHandler(this.enableEqpt_CheckedChanged);
+            // 
+            // customNewDurabilityMax
+            // 
+            this.customNewDurabilityMax.Location = new System.Drawing.Point(209, 59);
+            this.customNewDurabilityMax.Name = "customNewDurabilityMax";
+            this.customNewDurabilityMax.Size = new System.Drawing.Size(120, 20);
+            this.customNewDurabilityMax.TabIndex = 6;
+            this.customNewDurabilityMax.ValueChanged += new System.EventHandler(this.customNewDurabilityMax_ValueChanged);
+            // 
+            // customDurability
+            // 
+            this.customDurability.AutoSize = true;
+            this.customDurability.Location = new System.Drawing.Point(3, 19);
+            this.customDurability.Name = "customDurability";
+            this.customDurability.Size = new System.Drawing.Size(141, 17);
+            this.customDurability.TabIndex = 0;
+            this.customDurability.Text = "Durabilité personnalisé ?";
+            this.customDurability.UseVisualStyleBackColor = true;
+            this.customDurability.CheckedChanged += new System.EventHandler(this.customDurability_CheckedChanged);
+            // 
+            // setCustomDurability
+            // 
+            this.setCustomDurability.Location = new System.Drawing.Point(24, 59);
+            this.setCustomDurability.Name = "setCustomDurability";
+            this.setCustomDurability.Size = new System.Drawing.Size(120, 20);
+            this.setCustomDurability.TabIndex = 4;
+            this.setCustomDurability.ValueChanged += new System.EventHandler(this.setCustomDurability_ValueChanged);
             // 
             // RewardForm
             // 
@@ -259,6 +336,10 @@
             this.flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.amountField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.idField)).EndInit();
+            this.durability.ResumeLayout(false);
+            this.durability.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customNewDurabilityMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.setCustomDurability)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,5 +361,11 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.GroupBox durability;
+        private System.Windows.Forms.CheckBox customDurability;
+        private System.Windows.Forms.CheckBox enableNewDurability;
+        private System.Windows.Forms.CheckBox enableEqpt;
+        private System.Windows.Forms.NumericUpDown customNewDurabilityMax;
+        private System.Windows.Forms.NumericUpDown setCustomDurability;
     }
 }

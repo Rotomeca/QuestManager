@@ -58,6 +58,7 @@ namespace QuestManager.Models
         public void Update()
         {
             _UpdateTree(ref _stepsView, CurrentQuest.Steps.Select(x => x.ToString()).ToList());
+            _UpdateTree(ref _rewardsView, CurrentQuest.Rewards.Select(x => x.ToString()).ToList());
         }
     }
 }
